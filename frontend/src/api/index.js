@@ -1,7 +1,7 @@
 var socket = new WebSocket('ws://localhost:8080/ws')
 
-let connect = () => {
-  console.log('attempt connection ...')
+let connect = cb => {
+  console.log('connecting')
 
   socket.onopen = () => {
     console.log('connected')
@@ -9,6 +9,7 @@ let connect = () => {
 
   socket.onmessage = msg => {
     console.log(msg)
+    cb(msg)
   }
 
   socket.onclose = event => {

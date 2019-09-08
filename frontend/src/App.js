@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect, sendMessage } from './api'
 import Header from './components/Header'
 import History from './components/History'
+import Input from './components/Input'
 import './App.css'
 
 class App extends Component {
@@ -25,9 +26,11 @@ class App extends Component {
     })
   }
 
-  send() {
-    console.log('hello')
-    sendMessage('hello')
+  send(event) {
+    if (event.keyCode === 13) {
+      sendMessage(event.target.value)
+      event.target.value = ''
+    }
   }
 
   render() {
@@ -35,7 +38,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <History chatHistory={this.state.chatHistory} />
-        <button onClick={this.send}>Hit</button>
+        <Input send={this.send} />
       </div>
     )
   }

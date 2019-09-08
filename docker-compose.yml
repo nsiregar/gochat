@@ -4,16 +4,12 @@ services:
   backend:
     build:
       context: ./backend
-    command: /app/main
     ports:
       - 8080:8080
-    volumes:
-      - ./backend:/app
 
   frontend:
     build:
       context: ./frontend
-    command: npm start
     ports:
       - 3000:3000
     volumes:

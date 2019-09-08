@@ -5,4 +5,4 @@ Add . /app
 
 WORKDIR /app
 RUN go mod download
-RUN go build -o main ./...
+RUN go build -v
